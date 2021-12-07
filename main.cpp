@@ -179,7 +179,7 @@ int main()
 				}
 
 
-				if (scoreNumber >= 750) levelNumber = 6, delay = 0.1;				// When a score limit is reached the speed increase and the user goes up a level
+				if (scoreNumber >= 750) levelNumber = 6, delay = 0.12;				// When a score limit is reached the speed increase and the user goes up a level  
 				else if (scoreNumber >= 650) levelNumber = 5, delay = 0.15;
 				else if (scoreNumber >= 500) levelNumber = 4, delay = 0.25;
 				else if (scoreNumber >= 300) levelNumber = 3, delay = 0.35;
@@ -190,7 +190,7 @@ int main()
 
 
 				//Draw//
-				if (f == 0)															// If statement which play the game normally as long as the player doesn't lose
+				if (f == 0)															// If statement which plays the game normally as long as the player doesn't lose
 				{
 
 				window.clear(Color::White);
