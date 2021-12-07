@@ -14,12 +14,17 @@
 #include <time.h>					
 #include <Windows.h>
 #include <SFML/Audio.hpp>
+#include <mmsystem.h>
+#include <fstream>
+#pragma comment(lib, "winmm.lib") // Link to the winmm library
+
+
+
+
 
 
 using namespace sf;
 using std::to_string;
-
-
 
 const int M = 20;						// Height of the tetris board
 const int N = 10;						// Width of the tetris board
@@ -54,7 +59,7 @@ bool check()
 
 int main()
 {
-	
+
 	srand(time(0));
 
 	int f = 0;
@@ -73,6 +78,10 @@ int main()
 	if (!font.loadFromFile("Include/SFML/Fonts/Mermaid1001.ttf"))
 		return EXIT_FAILURE;
 
+
+	
+	
+
 	Sprite s(t1), background(t2), frame(t3), gameOver(t4);
 
 	int dx = 0; bool rotate = 0; int colorNum = 1;
@@ -86,7 +95,6 @@ int main()
 	{
 		while (window.isOpen())
 		{
-			
 
 				float time = clock1.getElapsedTime().asSeconds();
 				clock1.restart();
@@ -179,7 +187,7 @@ int main()
 				}
 
 
-				if (scoreNumber >= 750) levelNumber = 6, delay = 0.1;				// When a score limit is reached the speed increase and the user goes up a level
+				if (scoreNumber >= 750) levelNumber = 6, delay = 0.12;				// When a score limit is reached the speed increase and the user goes up a level  
 				else if (scoreNumber >= 650) levelNumber = 5, delay = 0.15;
 				else if (scoreNumber >= 500) levelNumber = 4, delay = 0.25;
 				else if (scoreNumber >= 300) levelNumber = 3, delay = 0.35;
@@ -190,8 +198,10 @@ int main()
 
 
 				//Draw//
-				if (f == 0)															// If statement which play the game normally as long as the player doesn't lose
+				if (f == 0)															// If statement which plays the game normally as long as the player doesn't lose
 				{
+
+					
 
 				window.clear(Color::White);
 				window.draw(background);
