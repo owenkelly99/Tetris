@@ -3,8 +3,7 @@
 * SFML Documentation https://www.sfml-dev.org/documentation/2.5.1/
 * Set up of SFML VS2019 project https://www.youtube.com/watch?v=lFzpkvrscs4
 *
-* ==== Group Streamers ====
-* Emmet Bloomer
+* ==== Tetris Game ====
 * Owen Kelly
 * =========================
 */
@@ -14,12 +13,17 @@
 #include <time.h>					
 #include <Windows.h>
 #include <SFML/Audio.hpp>
+#include <mmsystem.h>
+#include <fstream>
+#pragma comment(lib, "winmm.lib") // Link to the winmm library
+
+
+
+
 
 
 using namespace sf;
 using std::to_string;
-
-
 
 const int M = 20;						// Height of the tetris board
 const int N = 10;						// Width of the tetris board
@@ -54,7 +58,7 @@ bool check()
 
 int main()
 {
-	
+
 	srand(time(0));
 
 	int f = 0;
@@ -63,15 +67,19 @@ int main()
 
 	Texture t1, t2, t3, t4;	// image file locaters
 	t1.loadFromFile("images/tiles.png");
-	t2.loadFromFile("images/blue-background.jpg");
+	t2.loadFromFile("images/blue-background.jpg");							// Background while the game is playing
 	t3.loadFromFile("images/frame.png");
-	t4.loadFromFile("images/game-over.jpg");
+	t4.loadFromFile("images/game-over.jpg");								// Background when the user loses
 
 
 
 	sf::Font font;															// Font added to show text on the window
 	if (!font.loadFromFile("Include/SFML/Fonts/Mermaid1001.ttf"))
 		return EXIT_FAILURE;
+
+
+	
+	
 
 	Sprite s(t1), background(t2), frame(t3), gameOver(t4);
 
@@ -86,7 +94,6 @@ int main()
 	{
 		while (window.isOpen())
 		{
-			
 
 				float time = clock1.getElapsedTime().asSeconds();
 				clock1.restart();
@@ -192,6 +199,8 @@ int main()
 				//Draw//
 				if (f == 0)															// If statement which plays the game normally as long as the player doesn't lose
 				{
+
+					
 
 				window.clear(Color::White);
 				window.draw(background);
