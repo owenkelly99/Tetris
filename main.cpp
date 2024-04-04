@@ -1,3 +1,4 @@
+
 /*
 * An SFML application that plays the Tetris game.
 * SFML Documentation https://www.sfml-dev.org/documentation/2.5.1/
@@ -266,4 +267,3 @@ int main()
 	}
 
 	return 0;
-}
